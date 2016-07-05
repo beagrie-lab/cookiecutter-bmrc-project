@@ -1,6 +1,8 @@
 #!/bin/bash
 #$ -l h_vmem=20G
 #$ -cwd
+#$ -o run_server.out
+#$ -e run_server.err
 #$ -N {{ cookiecutter.repo_name }}
 
 export WORKON_HOME=$HOME/.virtualenvs
