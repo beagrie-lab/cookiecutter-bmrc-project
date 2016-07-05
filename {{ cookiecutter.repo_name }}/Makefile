@@ -1,8 +1,11 @@
-.PHONY: clean data lint requirements
+.PHONY: clean data lint requirements bootstrap
 
 #################################################################################
 # COMMANDS                                                                      #
 #################################################################################
+
+bootstrap:
+	mkvirtualenv {{ cookiecutter.repo_name }}
 
 requirements:
 	pip install -q -r requirements.txt
