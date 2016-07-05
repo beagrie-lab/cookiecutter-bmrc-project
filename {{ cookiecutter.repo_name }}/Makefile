@@ -11,6 +11,11 @@ bootstrap:
 	source `which virtualenvwrapper.sh`; \
 	mkvirtualenv -p {{ cookiecutter.python_interpreter }} {{ cookiecutter.repo_name }}; \
 	)
+	git init
+	echo "*.ipynb filter=ipynb_stripout" >> .gitattributes
+	git add .gitattributes
+	git commit -m "Added ipynb_stripout. See https://github.com/jond3k/ipynb_stripout" .gitattributes
+
 
 requirements:
 	( \
