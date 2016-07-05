@@ -4,5 +4,6 @@
     "author_name": "Your name (or your organization/company/team)",
     "description": "A short description of the project.",
     "year": "2016",
+    "python_interpreter": "/usr/bin/python",
     "open_source_license": ["Not open source", "MIT", "BSD"]
 }

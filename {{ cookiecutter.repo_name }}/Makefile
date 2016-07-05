@@ -5,10 +5,18 @@
 #################################################################################
 
 bootstrap:
-	mkvirtualenv {{ cookiecutter.repo_name }}
+	( \
+	source `which virtualenvwrapper.sh`; \
+	mkvirtualenv -p {{ cookiecutter.python_interpreter }} {{ cookiecutter.repo_name }}; \
+	)
 
 requirements:
-	pip install -q -r requirements.txt
+	( \
+	source `which virtualenvwrapper.sh`; \
+	deactivate; \
+	workon {{ cookiecutter.repo_name }}; \
+	pip install -r requirements.txt; \
+	)
 
 data: requirements
 	python src/data/make_dataset.py
