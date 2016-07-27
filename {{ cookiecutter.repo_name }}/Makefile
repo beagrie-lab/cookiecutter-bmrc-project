@@ -22,8 +22,8 @@ requirements:
 	source `which virtualenvwrapper.sh`; \
 	deactivate; \
 	workon {{ cookiecutter.repo_name }}; \
-	pip install --upgrade pip
-	ulimit -s 8024
+	pip install --upgrade pip; \
+	ulimit -s 8024; \
 	pip install -r requirements.txt; \
 	)
 
