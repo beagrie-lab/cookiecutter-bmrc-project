@@ -1,4 +1,7 @@
-mkdocs
-mkdocs-cinder
 cookiecutter
-virtualenvwrapper
+jupyterlab
+jupyterlab-git
+numpy
+pandas
+scikit-learn
+scipy
