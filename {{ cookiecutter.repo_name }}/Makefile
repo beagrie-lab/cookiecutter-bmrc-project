@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements bootstrap
+.PHONY: bootstrap
 
 SHELL := /bin/bash
 
@@ -8,34 +8,10 @@ SHELL := /bin/bash
 
 bootstrap:
 	( \
-	source `which virtualenvwrapper.sh`; \
-	mkvirtualenv -p {{ cookiecutter.python_interpreter }} {{ cookiecutter.repo_name }}; \
+	source load_modules.sh; \
+	python -m venv {{ cookiecutter.repo_name }}/env-${MODULE_CPU_TYPE}; \
+	source {{ cookiecutter.repo_name }}/env-${MODULE_CPU_TYPE}/bin/activate; \
+	pip install --upgrade pip;
+	pip install -r requirements.txt;
 	)
 	git init
-	echo "*.ipynb filter=ipynb_stripout" >> .gitattributes
-	git add .gitattributes
-	git commit -m "Added ipynb_stripout. See https://github.com/jond3k/ipynb_stripout" .gitattributes
-
-
-requirements:
-	( \
-	source `which virtualenvwrapper.sh`; \
-	deactivate; \
-	workon {{ cookiecutter.repo_name }}; \
-	pip install --upgrade pip; \
-	ulimit -s 8024; \
-	pip install -r requirements.txt; \
-	)
-
-data: requirements
-	python src/data/make_dataset.py
-
-clean:
-	find . -name "*.pyc" -exec rm {} \;
-
-lint:
-	flake8 --exclude=lib/,bin/ .
-
-#################################################################################
-# PROJECT RULES                                                                 #
-#################################################################################
