@@ -16,7 +16,7 @@ bootstrap: env-${MODULE_CPU_TYPE}/bin/activate .git requirements.txt
 	)
 
 .git:
-	echo "Initiating git repository
+	echo "Initiating git repository"
 	git init
 
 env-${MODULE_CPU_TYPE}/bin/activate:
@@ -25,3 +25,4 @@ env-${MODULE_CPU_TYPE}/bin/activate:
 	source load_modules.sh; \
 	python -m venv env-${MODULE_CPU_TYPE}; \
 	)
+	sed -i -e "4i source \$$(dirname -- \"\$${BASH_SOURCE[0]}\")/../../load_modules.sh" env-${MODULE_CPU_TYPE}/bin/activate
