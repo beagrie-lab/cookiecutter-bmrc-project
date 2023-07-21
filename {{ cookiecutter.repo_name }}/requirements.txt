@@ -6,3 +6,7 @@ numpy
 pandas
 scikit-learn
 scipy
+{% if cookiecutter.gam_support == "yes" %}
+cython
+gamtools
+{% endif %}

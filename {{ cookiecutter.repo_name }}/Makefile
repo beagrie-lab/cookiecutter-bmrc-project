@@ -9,10 +9,12 @@ SHELL := /bin/bash
 bootstrap: env-${MODULE_CPU_TYPE}/bin/activate .git requirements.txt
 	echo "Installing prerequisites"
 	( \
-	source load_modules.sh; \
+	module load Python/3.9.5-GCCcore-10.3.0; \
 	source env-${MODULE_CPU_TYPE}/bin/activate; \
-	pip install --upgrade pip; \
-	pip install -r requirements.txt; \
+	pip install -U pip; \
+{% if cookiecutter.gam_support == "yes" %}	pip install cython numpy; \
+	pip install git+https://github.com/pombo-lab/gamtools.git@pyproject-toml; \
+{% endif %}	pip install -r requirements.txt; \
 	)
 
 .git:
