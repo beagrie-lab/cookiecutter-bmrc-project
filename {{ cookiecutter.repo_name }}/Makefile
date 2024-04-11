@@ -18,6 +18,8 @@ bootstrap: env-${MODULE_CPU_TYPE}/bin/activate .git requirements.txt
 .git:
 	echo "Initiating git repository"
 	git init
+	git add README.md
+	git commit -m "First commit"
 
 env-${MODULE_CPU_TYPE}/bin/activate:
 	echo "Creating virtualenv"
