@@ -9,7 +9,7 @@ SHELL := /bin/bash
 bootstrap: env-${MODULE_CPU_TYPE}/bin/activate .git requirements.txt
 	echo "Installing prerequisites"
 	( \
-	module load Python/3.9.5-GCCcore-10.3.0; \
+	module load Python/3.10.4-GCCcore-11.3.0; \
 	source env-${MODULE_CPU_TYPE}/bin/activate; \
 	pip install -U pip; \
 	pip install -r requirements.txt; \
